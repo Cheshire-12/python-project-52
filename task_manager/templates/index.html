@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    Добро пожаловать в Task Manager!
-</body>
-</html>
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+<div class="p-5 mb-4 bg-light rounded-3 border">
+    <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold">{% translate "Welcome from Hexlet!" %}</h1>
+        <p class="col-md-8 fs-4">{% translate "Practical courses on programming" %}</p>
+        <hr class="my-4">
+        <a class="btn btn-primary btn-lg" href="https://ru.hexlet.io" target="_blank" role="button">
+            {% translate "Learn more" %}
+        </a>
+    </div>
+</div>
+{% endblock %}

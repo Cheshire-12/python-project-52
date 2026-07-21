@@ -1,2 +1,5 @@
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/Cheshire-12/python-project-52/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Cheshire-12/python-project-52/actions)
+
+## Public url app
+[Task Manager on a render.com](https://python-project-52-xgjl.onrender.com/)
