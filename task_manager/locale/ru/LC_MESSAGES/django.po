@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-21 14:36+0000\n"
+"POT-Creation-Date: 2026-07-24 08:45+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,6 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
+
 #: task_manager/templates/base.html:9 task_manager/templates/base.html:18
 msgid "Task Manager"
 msgstr "Менеджер задач"
@@ -27,12 +28,18 @@ msgstr "Менеджер задач"
 msgid "Users"
 msgstr "Пользователи"
 
-#: task_manager/templates/base.html:33
+#: task_manager/templates/base.html:38
+msgid "Logout"
+msgstr "Выход"
+
+#: task_manager/templates/base.html:44
 msgid "Login"
 msgstr "Вход"
 
-#: task_manager/templates/base.html:36
-msgid "Registration"
+#: task_manager/templates/base.html:47
+#, fuzzy
+#| msgid "Registration"
+msgid "Register"
 msgstr "Регистрация"
 
 #: task_manager/templates/index.html:7
@@ -46,3 +53,47 @@ msgstr "Практические курсы по программировани�
 #: task_manager/templates/index.html:11
 msgid "Learn more"
 msgstr "Узнать больше"
+
+#: task_manager/users/forms.py:9 task_manager/users/forms.py:24
+msgid "First Name"
+msgstr "Имя"
+
+#: task_manager/users/forms.py:10 task_manager/users/forms.py:25
+msgid "Last Name"
+msgstr "Фамилия"
+
+#: task_manager/users/forms.py:18 task_manager/users/forms.py:33
+msgid "Username"
+msgstr "Имя пользователя"
+
+#: task_manager/users/forms.py:19
+msgid "Password"
+msgstr "Пароль"
+
+#: task_manager/users/forms.py:20
+msgid "Confirm Password"
+msgstr "Подтверждение пароля"
+
+#: task_manager/users/views.py:26
+msgid "You do not have permission to modify another user"
+msgstr "У вас нет прав для изменения"
+
+#: task_manager/users/views.py:44
+msgid "User registered successfully"
+msgstr "Пользователь успешно зарегистрирован"
+
+#: task_manager/users/views.py:53
+msgid "User updated successfully"
+msgstr "Пользователь успешно изменен"
+
+#: task_manager/users/views.py:61
+msgid "User deleted successfully"
+msgstr "Пользователь успешно удален"
+
+#: task_manager/users/views.py:67
+msgid "You are logged in"
+msgstr "Вы залогинены"
+
+#: task_manager/users/views.py:73
+msgid "You are logged out"
+msgstr "Вы разлогинены"

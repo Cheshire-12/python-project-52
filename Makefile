@@ -18,3 +18,6 @@ render-start:
 
 dev:
 	uv run python manage.py runserver
+
+translate:
+	uv run python manage.py makemessages -l ru
