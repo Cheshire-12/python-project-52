@@ -63,7 +63,8 @@ class UserDeleteView(UserPermissionMixin, SuccessMessageMixin, DeleteView):
 
 # 5. Login user
 class UserLoginView(SuccessMessageMixin, LoginView):
-    template_name = 'users/login.html'
+    template_name = 'login.html'
+    success_url = reverse_lazy('index')
     success_message = _('You are logged in')
 
 

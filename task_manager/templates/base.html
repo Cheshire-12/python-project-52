@@ -31,6 +31,15 @@
 
                 <ul class="navbar-nav">
                     {% if user.is_authenticated %}
+                        <li class="nav-tem">
+                            <a class="nav-link" href="#">{% translate "Statuses" %}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">{% translate "Tags" %}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">{% translate "Tasks" %}</a>
+                        </li>
                         <li class="nav-item">
                             <form action="{% url 'logout' %}" method="post" class="d-inline">
                                 {% csrf_token %}
@@ -39,12 +48,13 @@
                                 </button>
                             </form>Logout
                         </li>
+
                     {% else %}
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'login' %}">{% translate "Login" %}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'users_create' %}">{% translate "Register" %}</a>
+                            <a class="nav-link" href="{% url 'user_create' %}">{% translate "Register" %}</a>
                         </li>
                     {% endif %}
                 </ul>

@@ -1,0 +1,20 @@
+[
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$Uc5ZXbs14Q59pGjm42cUvk$Uj6roz0zmXUon5T/rpygPLhAE4jfcESJwStnMLWF+ig=",
+    "last_login": "2026-07-25T09:25:02.000Z",
+    "is_superuser": true,
+    "username": "andrey",
+    "first_name": "Andrey",
+    "last_name": "Vedenkin",
+    "email": "andr.vnk@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-07-20T17:56:20.799Z",
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]
