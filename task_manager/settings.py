@@ -22,6 +22,7 @@ env = environ.Env(
     DATABASE_URL=(str, f'sqlite:///{BASE_DIR / "db.sqlite3"}'),
     DEBUG=(bool, True),
     ALLOWED_HOSTS=(list, ['webserver', '127.0.0.1', 'localhost',]),
+    SECRET_KEY=(str, 'django-insecure-dummy-key-for-tests'),
     )
 environ.Env.read_env(BASE_DIR / '.env')
 
