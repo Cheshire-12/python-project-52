@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-24 08:45+0000\n"
+"POT-Creation-Date: 2026-07-26 11:19+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,21 +25,33 @@ msgid "Task Manager"
 msgstr "Менеджер задач"
 
 #: task_manager/templates/base.html:28
+#: task_manager/templates/users/users_list.html:5
 msgid "Users"
 msgstr "Пользователи"
 
+#: task_manager/templates/base.html:35
+msgid "Statuses"
+msgstr "Статусы"
+
 #: task_manager/templates/base.html:38
+msgid "Tags"
+msgstr "Метки"
+
+#: task_manager/templates/base.html:41
+msgid "Tasks"
+msgstr "Задачи"
+
+#: task_manager/templates/base.html:47
 msgid "Logout"
 msgstr "Выход"
 
-#: task_manager/templates/base.html:44
+#: task_manager/templates/base.html:54 task_manager/templates/login.html:6
 msgid "Login"
 msgstr "Вход"
 
-#: task_manager/templates/base.html:47
-#, fuzzy
-#| msgid "Registration"
-msgid "Register"
+#: task_manager/templates/base.html:57
+#: task_manager/templates/users/create.html:6
+msgid "Registration"
 msgstr "Регистрация"
 
 #: task_manager/templates/index.html:7
@@ -54,6 +66,52 @@ msgstr "Практические курсы по программировани�
 msgid "Learn more"
 msgstr "Узнать больше"
 
+#: task_manager/templates/login.html:11
+msgid "Enter"
+msgstr "Войти"
+
+#: task_manager/templates/users/create.html:11
+msgid "Register"
+msgstr "Зарегистрировать"
+
+#: task_manager/templates/users/delete.html:6
+msgid "Delete User"
+msgstr "Удаление пользователя"
+
+#: task_manager/templates/users/delete.html:8
+msgid "Are you sure you want to delete?"
+msgstr "Вы уверены, что хотите удалить?"
+
+#: task_manager/templates/users/delete.html:12
+msgid "Yes, delete"
+msgstr "Да, удалить"
+
+#: task_manager/templates/users/update.html:7
+msgid "Update user"
+msgstr "Изменение пользователя"
+
+#: task_manager/templates/users/update.html:11
+#: task_manager/templates/users/users_list.html:25
+msgid "Update"
+msgstr "Изменить"
+
+#: task_manager/templates/users/users_list.html:11
+#: task_manager/users/forms.py:18 task_manager/users/forms.py:33
+msgid "Username"
+msgstr "Имя пользователя"
+
+#: task_manager/templates/users/users_list.html:12
+msgid "Full Name"
+msgstr "Полное имя"
+
+#: task_manager/templates/users/users_list.html:13
+msgid "Date Created"
+msgstr "Дата создания"
+
+#: task_manager/templates/users/users_list.html:27
+msgid "Delete"
+msgstr "Удалить"
+
 #: task_manager/users/forms.py:9 task_manager/users/forms.py:24
 msgid "First Name"
 msgstr "Имя"
@@ -61,10 +119,6 @@ msgstr "Имя"
 #: task_manager/users/forms.py:10 task_manager/users/forms.py:25
 msgid "Last Name"
 msgstr "Фамилия"
-
-#: task_manager/users/forms.py:18 task_manager/users/forms.py:33
-msgid "Username"
-msgstr "Имя пользователя"
 
 #: task_manager/users/forms.py:19
 msgid "Password"
@@ -90,10 +144,10 @@ msgstr "Пользователь успешно изменен"
 msgid "User deleted successfully"
 msgstr "Пользователь успешно удален"
 
-#: task_manager/users/views.py:67
+#: task_manager/users/views.py:68
 msgid "You are logged in"
 msgstr "Вы залогинены"
 
-#: task_manager/users/views.py:73
+#: task_manager/users/views.py:74
 msgid "You are logged out"
 msgstr "Вы разлогинены"

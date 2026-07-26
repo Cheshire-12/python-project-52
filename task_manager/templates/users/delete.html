@@ -5,7 +5,7 @@
 {% block content %}
 <h1 class="my-4">{% translate "Delete User" %}</h1>
 
-<p>{% translate "Are you sure you want to delete" %} {{ object.username }}?</p>
+<p>{% translate "Are you sure you want to delete?" %} {{ object.username }}?</p>
 
 <form method="post">
     {% csrf_token %}
