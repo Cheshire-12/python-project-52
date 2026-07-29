@@ -24,3 +24,6 @@ translate:
 
 test:
 	uv run python manage.py test
+
+shell:
+	uv run python manage.py shell

@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'django_bootstrap5',
     'task_manager',
     'task_manager.users',
+    'task_manager.statuses',
 ]
 
 MIDDLEWARE = [
@@ -69,6 +70,7 @@ ROOT_URLCONF = 'task_manager.urls'
 
 LOGOUT_REDIRECT_URL = 'index'
 LOGIN_REDIRECT_URL = 'index'
+LOGIN_URL = 'login'
 
 TEMPLATES = [
     {
@@ -147,4 +149,8 @@ LANGUAGES = [
 
 LOCALE_PATHS = [
     BASE_DIR / 'locale',
+]
+
+FIXTURE_DIRS = [
+    BASE_DIR / 'task_manager' / 'tests' / 'fixtures'
 ]
