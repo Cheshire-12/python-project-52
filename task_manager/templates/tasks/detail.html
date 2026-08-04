@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% load i18n %}
+
+
+{% block content %}
+<h1 class="my-4">{% translate "View task" %}</h1>
+<div class="card bg-light">
+    <div class="card-header bg-secondary text-white">
+        <h2>{{ task.name }}</h2>
+    </div>
+    <div class="card-body">
+        <p>{{ task.description }}</p>
+    <hr>
+        <div class="row p-1">
+            <div class="col">
+                <p>{% translate "Author" %}</p>
+            </div>
+            <div class="col">
+                <p>{{ task.author }}</p>
+            </div>
+        </div>
+        <div class="row p-1">
+            <div class="col">
+                <p>{% translate "Executor" %}</p>
+            </div>
+            <div class="col">
+                <p>{{ task.executor }}</p>
+            </div>
+        </div>
+        <div class="row p-1">
+            <div class="col">
+                <p>{% translate "Status" %}</p>
+            </div>
+            <div class="col">
+                <p>{{ task.status }}</p>
+            </div>
+        </div>
+        <div class="row p-1">
+            <div class="col">
+                <p>{% translate "Date created" %}</p>
+            </div>
+            <div class="col">
+                <p>{{ task.created_at|date:"d.m.Y H:i" }}</p>
+            </div>
+        </div>
+        <div class="row p-1">
+            <div class="col">
+                <p>{% translate "Labels" %}</p>
+                <ul>
+                    {% for label in task.labels.all %}
+                        <li>{{ label.name }}</li>
+                    {% empty %}
+                        <p>{% translate "No labels" %}</p>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        <a href="{% url 'tasks:update' task.id %}">{% translate "Update" %}</a>
+        <br>
+        <a href="{% url 'tasks:delete' task.id %}">{% translate "Delete" %}</a>
+    </div>
+</div>
+{% endblock %} 
+

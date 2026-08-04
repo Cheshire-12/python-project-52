@@ -22,6 +22,9 @@ dev:
 translate:
 	uv run python manage.py makemessages -l ru
 
+makemigrations:
+	uv run python manage.py makemigrations
+
 test:
 	uv run python manage.py test
 

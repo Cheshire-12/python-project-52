@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% load i18n %}
+
+{% block content %}
+<h1 class="my-4">{% translate "Tasks" %}</h1>
+<a href="{% url 'tasks:create' %}" class="btn btn-primary mb-3">{% translate "Create Task" %}</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">{% translate "ID" %}</th>
+            <th scope="col">{% translate "Name" %}</th>
+            <th scope="col">{% translate "Status" %}</th>
+            <th scope="col">{% translate "Author" %}</th>
+            <th scope="col">{% translate "Executor" %}</th>
+            <th scope="col">{% translate "Date Created" %}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for task in tasks %}
+        <tr>
+            <td>{{ task.id }}</td>
+            <td><a href="{% url 'tasks:detail' task.id %}">{{ task.name }}</a></td>
+            <td>{{ task.status }}</td>
+            <td>{{ task.author }}</td>
+            <td>{{ task.executor }}</td>
+            <td>{{ task.created_at|date:"d.m.Y H:i" }}</td>
+            <td>
+                <a href="{% url 'tasks:update' task.id %}">{% translate "Update" %}</a>
+                <br>
+                <a href="{% url 'tasks:delete' task.id %}">{% translate "Delete" %}</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
