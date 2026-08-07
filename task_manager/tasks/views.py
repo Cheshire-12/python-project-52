@@ -2,6 +2,7 @@ from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import redirect
+from django_filters.views import FilterView
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import (
@@ -14,13 +15,14 @@ from django.views.generic import (
 
 from .forms import TaskForm
 from .models import Task
+from .filters import TaskFilter
 
 
-class TaskIndexView(LoginRequiredMixin, ListView):
+class TaskIndexView(LoginRequiredMixin, FilterView):
     model = Task
     template_name = 'tasks/tasks_list.html'
     context_object_name = 'tasks'
-
+    filterset_class = TaskFilter
 
 class TaskDetailView(LoginRequiredMixin, DetailView):
     model = Task

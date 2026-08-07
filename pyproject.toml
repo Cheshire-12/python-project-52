@@ -8,6 +8,7 @@ dependencies = [
     "django>=6.0.7",
     "django-bootstrap5>=26.2",
     "django-environ>=0.14.0",
+    "django-filter>=26.1",
     "gunicorn>=26.0.0",
     "psycopg[binary]>=3.3.4",
     "whitenoise>=6.12.0",
