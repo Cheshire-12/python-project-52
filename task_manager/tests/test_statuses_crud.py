@@ -47,7 +47,7 @@ class StatusCRUDTestCase(TestCase):
             response = self.client.get(url)
             self.assertEqual(response.status_code, 200)
 
-    def test_status_create_success(self):
+    def test_status_success_create(self):
         self.client.force_login(self.user1)
         response = self.client.post(
             reverse('statuses:create'),
@@ -66,7 +66,7 @@ class StatusCRUDTestCase(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertFormError(response.context['form'], 'name', 'Status with this Name already exists.') # type: ignore
 
-    def test_status_update(self):
+    def test_status_success_update(self):
         self.client.force_login(self.user1)
         updated_data = {'name': 'Updated Status'}
         response = self.client.post(
@@ -77,7 +77,7 @@ class StatusCRUDTestCase(TestCase):
         self.status1.refresh_from_db()
         self.assertEqual(self.status1.name, 'Updated Status')
 
-    def test_status_delete(self):
+    def test_status_success_delete(self):
         self.client.force_login(self.user1)
         response = self.client.post(
             reverse('statuses:delete', kwargs={'pk': self.status1.pk})
