@@ -28,6 +28,10 @@ makemigrations:
 test:
 	uv run python manage.py test
 
+coverage:
+	uv run coverage run manage.py test
+	uv run coverage xml
+
 lint:
 	uv run ruff check
 

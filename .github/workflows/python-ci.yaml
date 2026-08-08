@@ -19,9 +19,20 @@ jobs:
 
       - name: Install dependencies
         run: make install
-
+      
+      - name: Run linter
+        run: make lint
+      
       - name: Run tests
         run: make test
+      
+      - name: Run coverage
+        run: make coverage
+      
+      - name: SonarQube Cloud Scan
+        uses: sonarsource/sonarqube-scan-action@v6
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       
       - name: Trigger Render Deploy
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
