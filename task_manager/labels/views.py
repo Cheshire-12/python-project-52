@@ -9,11 +9,13 @@ from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 from .forms import LabelForm
 from .models import Label
 
+
 class LabelIndexView(LoginRequiredMixin, ListView):
     model = Label
     template_name = 'labels/labels_list.html'
     context_object_name = 'labels'
     
+
 class LabelCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = Label
     form_class = LabelForm
@@ -21,12 +23,14 @@ class LabelCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     success_url = reverse_lazy('labels:list')
     success_message = _('Label successfully created')
     
+
 class LabelUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Label
     form_class = LabelForm
     template_name = 'labels/update.html'
     success_url = reverse_lazy('labels:list')
     success_message = _('Label successfully updated')
+
 
 class LabelDeleteView(LoginRequiredMixin, DeleteView):
     model = Label

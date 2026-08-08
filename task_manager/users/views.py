@@ -16,13 +16,11 @@ User = get_user_model()
 # Mixin to check if the user has permission to modify their own data
 class UserPermissionMixin(UserPassesTestMixin):
     def test_func(self):
-        # Check if the user is trying to modify their own data
-        return self.get_object() == self.request.user #type: ignore
+        return self.get_object() == self.request.user  # type: ignore
 
     def handle_no_permission(self):
-        # If the user does not have permission, display an error message and redirect to the users list
         messages.error(
-            self.request, #type: ignore
+            self.request,  # type: ignore
             _('You do not have permission to modify another user')
         )
         return redirect('users')

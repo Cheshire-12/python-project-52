@@ -1,6 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import reverse
+
 from task_manager.statuses.models import Status
 
 User = get_user_model()
@@ -64,7 +65,9 @@ class StatusCRUDTestCase(TestCase):
             data=duplicate_data
         )
         self.assertEqual(response.status_code, 200)
-        self.assertFormError(response.context['form'], 'name', 'Status with this Name already exists.') # type: ignore
+        self.assertFormError(response.context['form'],
+                            'name',
+                            'Status with this Name already exists.')  # type: ignore
 
     def test_status_success_update(self):
         self.client.force_login(self.user1)

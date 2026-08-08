@@ -1,6 +1,7 @@
-from django.test import TestCase
 from django.contrib.auth import get_user_model
+from django.test import TestCase
 from django.urls import reverse
+
 from task_manager.tasks.models import Task
 
 User = get_user_model()
@@ -43,7 +44,8 @@ class TaskCRUDTestCase(TestCase):
 
         post_urls = [
             (reverse('tasks:create'), self.create_task_data),
-            (reverse('tasks:update', kwargs={'pk': self.task.pk}), self.update_task_data),
+            (reverse('tasks:update',
+                    kwargs={'pk': self.task.pk}), self.update_task_data),
             (reverse('tasks:delete', kwargs={'pk': self.task.pk}), {}),
         ]
         for url, data in post_urls:
@@ -79,7 +81,8 @@ class TaskCRUDTestCase(TestCase):
         created_task = Task.objects.get(name='New Task')
         self.assertIsNotNone(created_task)
         self.assertEqual(created_task.author, self.user)
-        self.assertEqual(created_task.description, self.create_task_data['description'])
+        self.assertEqual(created_task.description,
+                        self.create_task_data['description'])
 
     def test_task_detail_view(self):
         self.client.force_login(self.user)

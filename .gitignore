@@ -2,3 +2,4 @@
 .env
 .vscode
 .ruff_cache
+.coverage

@@ -1,6 +1,6 @@
+from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import reverse
-from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
@@ -37,7 +37,8 @@ class UserCRUDTestCase(TestCase):
         self.assertEqual(response.status_code, 200)
 
     def test_user_create_success(self):
-        response = self.client.post(reverse('user_create'), data=self.new_user_data)
+        response = self.client.post(reverse('user_create'),
+                                    data=self.new_user_data)
         self.assertRedirects(response, reverse('login'))
         self.assertTrue(User.objects.filter(username='new_user').exists())
 

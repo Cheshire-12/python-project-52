@@ -1,7 +1,8 @@
+from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import reverse
+
 from task_manager.labels.models import Label
-from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
@@ -14,15 +15,15 @@ class LabelsCRUDTestCase(TestCase):
         self.label = Label.objects.get(pk=2)
 
     def test_anonymous_access(self):
-            urls = [
-                reverse('labels:list'),
-                reverse('labels:create'),
-                reverse('labels:update', kwargs={'pk': self.label.pk}),
-                reverse('labels:delete', kwargs={'pk': self.label.pk}),
-            ]
-            for url in urls:
-                response = self.client.get(url)
-                self.assertEqual(response.status_code, 302)
+        urls = [
+            reverse('labels:list'),
+            reverse('labels:create'),
+            reverse('labels:update', kwargs={'pk': self.label.pk}),
+            reverse('labels:delete', kwargs={'pk': self.label.pk}),
+        ]
+        for url in urls:
+            response = self.client.get(url)
+            self.assertEqual(response.status_code, 302)
 
     def test_labels_list_view(self):
         self.client.force_login(self.user)
@@ -51,14 +52,16 @@ class LabelsCRUDTestCase(TestCase):
         self.assertTrue(Label.objects.filter(name='Feature').exists())
     
     def test_label_create_duplicate_name(self):
-            self.client.force_login(self.user)
-            duplicate_data = {'name': self.label.name}
-            response = self.client.post(
-                reverse('labels:create'),
-                data=duplicate_data
-            )
-            self.assertEqual(response.status_code, 200)
-            self.assertFormError(response.context['form'], 'name', 'Label with this Name already exists.') # type: ignore
+        self.client.force_login(self.user)
+        duplicate_data = {'name': self.label.name}
+        response = self.client.post(
+            reverse('labels:create'),
+            data=duplicate_data
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertFormError(response.context['form'],
+                             'name',
+                             'Label with this Name already exists.')  # type: ignore
 
     def test_label_success_update(self):
         self.client.force_login(self.user)

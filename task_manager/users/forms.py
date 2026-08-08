@@ -5,9 +5,14 @@ from django.utils.translation import gettext_lazy as _
 
 User = get_user_model()
 
+
 class CustomUserCreationForm(UserCreationForm):
-    first_name = forms.CharField(max_length=100, required=False, label=_('First Name'))
-    last_name = forms.CharField(max_length=100, required=False, label=_('Last Name'))
+    first_name = forms.CharField(
+        max_length=100, required=False, label=_('First Name')
+        )
+    last_name = forms.CharField(
+        max_length=100, required=False, label=_('Last Name')
+        )
 
     class Meta(UserCreationForm.Meta):
         model = User
@@ -21,8 +26,12 @@ class CustomUserCreationForm(UserCreationForm):
              
 
 class CustomUserUpdateForm(forms.ModelForm):
-    first_name = forms.CharField(max_length=100, required=False, label=_('First Name'))
-    last_name = forms.CharField(max_length=100, required=False, label=_('Last Name'))
+    first_name = forms.CharField(
+        max_length=100, required=False, label=_('First Name')
+        )
+    last_name = forms.CharField(
+        max_length=100, required=False, label=_('Last Name')
+        )
 
     class Meta:
         model = User

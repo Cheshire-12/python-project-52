@@ -1,14 +1,17 @@
-from django.test import TestCase, RequestFactory
 from django.contrib.auth import get_user_model
-from task_manager.tasks.models import Task
-from task_manager.statuses.models import Status
+from django.test import RequestFactory, TestCase
+
 from task_manager.labels.models import Label
+from task_manager.statuses.models import Status
 from task_manager.tasks.filters import TaskFilter
+from task_manager.tasks.models import Task
 
 User = get_user_model()
 
+
 class TaskFilterTestCase(TestCase):
     fixtures = ['users.json', 'statuses.json', 'labels.json', 'tasks.json']
+
     def setUp(self):
         self.factory = RequestFactory()
         

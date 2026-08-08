@@ -28,5 +28,8 @@ makemigrations:
 test:
 	uv run python manage.py test
 
+lint:
+	uv run ruff check
+
 shell:
 	uv run python manage.py shell
