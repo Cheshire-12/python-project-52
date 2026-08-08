@@ -23,6 +23,8 @@ env = environ.Env(
     DEBUG=(bool, True),
     ALLOWED_HOSTS=(list, ['webserver', '127.0.0.1', 'localhost',]),
     SECRET_KEY=(str, 'django-insecure-dummy-key-for-tests'),
+    ROLLBAR_ACCESS_TOKEN=(str, ''),
+    ROLLBAR_ENVIRONMENT=(str, 'development')
     )
 environ.Env.read_env(BASE_DIR / '.env')
 
@@ -37,6 +39,9 @@ SECRET_KEY = env('SECRET_KEY')
 DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
+# ROLLBAR_ACCESS_TOKEN = env('ROLLBAR_ACCESS_TOKEN')
+ROLLBAR_ACCESS_TOKEN = env('ROLLBAR_ACCESS_TOKEN')
+ROLLBAR_ENVIRONMENT = env('ROLLBAR_ENVIRONMENT')
 
 
 # Application definition
@@ -67,6 +72,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
 ]
 
 ROOT_URLCONF = 'task_manager.urls'
@@ -157,3 +163,10 @@ LOCALE_PATHS = [
 FIXTURE_DIRS = [
     BASE_DIR / 'task_manager' / 'tests' / 'fixtures'
 ]
+
+ROLLBAR = {
+    'access_token': env('ROLLBAR_ACCESS_TOKEN'),
+    'environment': env('ROLLBAR_ENVIRONMENT'),
+    'code_version': os.getenv('GIT_SHA', '1.0.0'),
+    'root': BASE_DIR,
+}

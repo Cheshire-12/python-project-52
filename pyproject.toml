@@ -11,6 +11,7 @@ dependencies = [
     "django-filter>=26.1",
     "gunicorn>=26.0.0",
     "psycopg[binary]>=3.3.4",
+    "rollbar>=1.4.0",
     "whitenoise>=6.12.0",
 ]
 
