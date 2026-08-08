@@ -12,11 +12,21 @@ class TaskCRUDTestCase(TestCase):
     def setUp(self):
         self.user = User.objects.get(pk=1)
         self.task = Task.objects.get(pk=1)
-        self.new_task_data = {
+
+        self.create_task_data = {
             'name': 'New Task',
-            'description': 'This is a new task.',
+            'description': 'This is a new task description.',
             'status': self.task.status.pk,
             'executor': self.user.pk,
+            'labels': [1]
+        }
+
+        self.update_task_data = {
+            'name': 'Updated Task Name',
+            'description': 'Updated description.',
+            'status': 2,
+            'executor': self.user.pk,
+            'labels': [1, 2]
         }
 
     def test_anonymous_access(self):
@@ -29,6 +39,15 @@ class TaskCRUDTestCase(TestCase):
         ]
         for url in urls:
             response = self.client.get(url)
+            self.assertEqual(response.status_code, 302)
+
+        post_urls = [
+            (reverse('tasks:create'), self.create_task_data),
+            (reverse('tasks:update', kwargs={'pk': self.task.pk}), self.update_task_data),
+            (reverse('tasks:delete', kwargs={'pk': self.task.pk}), {}),
+        ]
+        for url, data in post_urls:
+            response = self.client.post(url, data=data)
             self.assertEqual(response.status_code, 302)
 
     def test_task_list(self):
@@ -53,13 +72,14 @@ class TaskCRUDTestCase(TestCase):
         self.client.force_login(self.user)
         response = self.client.post(
             reverse('tasks:create'),
-            data=self.new_task_data
+            data=self.create_task_data
         )
         self.assertRedirects(response, reverse('tasks:list'))
-        
+
         created_task = Task.objects.get(name='New Task')
         self.assertIsNotNone(created_task)
         self.assertEqual(created_task.author, self.user)
+        self.assertEqual(created_task.description, self.create_task_data['description'])
 
     def test_task_detail_view(self):
         self.client.force_login(self.user)
@@ -72,19 +92,15 @@ class TaskCRUDTestCase(TestCase):
 
     def test_task_update(self):
         self.client.force_login(self.user)
-        updated_data = {
-            'name': 'Updated Task Name',
-            'description': self.task.description,
-            'status': self.task.status.pk,
-            'executor': self.user.pk,
-        }
         response = self.client.post(
             reverse('tasks:update', kwargs={'pk': self.task.pk}),
-            data=updated_data
+            data=self.update_task_data
         )
         self.assertRedirects(response, reverse('tasks:list'))
         self.task.refresh_from_db()
         self.assertEqual(self.task.name, 'Updated Task Name')
+        self.assertEqual(self.task.description, 'Updated description.')
+        self.assertEqual(self.task.status.pk, 2)
 
     def test_task_delete_by_author(self):
         self.client.force_login(self.user)
@@ -95,10 +111,7 @@ class TaskCRUDTestCase(TestCase):
         self.assertFalse(Task.objects.filter(pk=self.task.pk).exists())
 
     def test_task_delete_by_non_author(self):
-        other_user = User.objects.create_user(
-            username='other_user',
-            password='password123'
-        )
+        other_user = User.objects.get(pk=2)
         self.client.force_login(other_user)
         response = self.client.post(
             reverse('tasks:delete', kwargs={'pk': self.task.pk})

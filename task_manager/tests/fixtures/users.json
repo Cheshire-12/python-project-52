@@ -9,10 +9,28 @@
     "username": "andrey",
     "first_name": "Andrey",
     "last_name": "Vedenkin",
-    "email": "andr.vnk@gmail.com",
+    "email": "other@example.com",
     "is_staff": true,
     "is_active": true,
     "date_joined": "2026-07-20T17:56:20.799Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$GMOdKZKHI3CFC9oZG6i4Y7$+OQruXRZoe/UGvOVslZm6tPjrhvCXxGgSKkTdt+upCw=",
+    "last_login": "2026-08-07T14:47:25.527Z",
+    "is_superuser": false,
+    "username": "ayachap",
+    "first_name": "Ayane",
+    "last_name": "Murata",
+    "email": "ayane@example.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-07-24T09:20:11.708Z",
     "groups": [],
     "user_permissions": []
   }
