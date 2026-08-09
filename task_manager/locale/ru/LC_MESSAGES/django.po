@@ -139,7 +139,7 @@ msgstr "Выход"
 
 #: task_manager/templates/base.html:51 task_manager/templates/login.html:6
 msgid "Login"
-msgstr "Войти"
+msgstr "Вход"
 
 #: task_manager/templates/base.html:54
 #: task_manager/templates/users/create.html:6
@@ -263,7 +263,7 @@ msgstr "Изменение задачи"
 
 #: task_manager/templates/users/create.html:11
 msgid "Register"
-msgstr "Регистрация"
+msgstr "Зарегистрировать"
 
 #: task_manager/templates/users/delete.html:6
 msgid "Delete User"
