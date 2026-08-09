@@ -8,6 +8,7 @@ from .models import Task
 
 User = get_user_model()
 
+
 class UserModelChoiceField(forms.ModelChoiceField):
     def label_from_instance(self, obj):
         return obj.get_full_name() or obj.username
