@@ -7,6 +7,7 @@ from .models import Task
 
 User = get_user_model()
 
+
 class TaskForm(forms.ModelForm):
     labels = forms.ModelMultipleChoiceField(
         queryset=Label.objects.all(),

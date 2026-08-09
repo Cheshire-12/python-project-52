@@ -1,5 +1,5 @@
 from django.contrib import messages
-from django.contrib.auth import get_user_model
+from django.contrib.auth import get_user_model, update_session_auth_hash
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.messages.views import SuccessMessageMixin
@@ -22,7 +22,7 @@ class UserPermissionMixin(UserPassesTestMixin):
     def handle_no_permission(self):
         messages.error(
             self.request,  # type: ignore
-            _('You do not have permission to modify another user')
+            _('You do not have permission to edit')
         )
         return redirect('users')
 
@@ -50,6 +50,19 @@ class UserUpdateView(UserPermissionMixin, SuccessMessageMixin, UpdateView):
     template_name = 'users/update.html'
     success_url = reverse_lazy('users')
     success_message = _('User updated successfully')
+    
+    def test_func(self):
+        return self.get_object() == self.request.user
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        update_session_auth_hash(self.request, form.instance)  # type: ignore
+        return response
+
+    def handle_no_permission(self):
+        messages.error(self.request,
+                    _("You do not have permission to edit"))
+        return redirect('users')
 
 
 # 4. Delete user
@@ -69,8 +82,8 @@ class UserDeleteView(
     
     def handle_no_permission(self):
         if self.request.user.is_authenticated:
-            messages.error(self.request,
-                        _('You do not have permission to modify another user.'))
+            messages.error(self.request,  # type: ignore
+                    _('You do not have permission to edit'))
             return redirect('users')
         return super().handle_no_permission()
 

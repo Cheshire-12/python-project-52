@@ -32,11 +32,28 @@ class CustomUserUpdateForm(forms.ModelForm):
     last_name = forms.CharField(
         max_length=100, required=False, label=_('Last Name')
         )
+    password = forms.CharField(
+        widget=forms.PasswordInput(),
+        required=False,
+        label=_('Password'),
+        help_text=_('Leave blank if you do not want to change the password')
+    )
 
     class Meta:
         model = User
         fields = ('first_name', 'last_name', 'username')
 
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        password = self.cleaned_data.get('password')
+        if password:
+            user.set_password(password)
+            
+        if commit:
+            user.save()
+        return user
+    
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['username'].label = _('Username')
+        self.fields['password'].label = _('Password')
