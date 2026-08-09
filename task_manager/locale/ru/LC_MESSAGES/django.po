@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-09 14:07+0000\n"
+"POT-Creation-Date: 2026-08-09 16:44+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -73,6 +73,19 @@ msgstr "Невозможно удалить статус, потому что о
 msgid "My tasks only"
 msgstr ""
 
+#: task_manager/tasks/forms.py:16 task_manager/tasks/models.py:40
+#: task_manager/templates/base.html:35
+#: task_manager/templates/labels/labels_list.html:5
+#: task_manager/templates/tasks/detail.html:49
+msgid "Labels"
+msgstr "Метки"
+
+#: task_manager/tasks/forms.py:22 task_manager/tasks/models.py:34
+#: task_manager/templates/tasks/detail.html:25
+#: task_manager/templates/tasks/tasks_list.html:19
+msgid "Executor"
+msgstr "Исполнитель"
+
 #: task_manager/tasks/models.py:14
 msgid "Description"
 msgstr "Описание"
@@ -86,17 +99,6 @@ msgstr "Статус"
 #: task_manager/templates/tasks/tasks_list.html:18
 msgid "Author"
 msgstr "Автор"
-
-#: task_manager/tasks/models.py:34 task_manager/templates/tasks/detail.html:25
-#: task_manager/templates/tasks/tasks_list.html:19
-msgid "Executor"
-msgstr "Исполнитель"
-
-#: task_manager/tasks/models.py:40 task_manager/templates/base.html:35
-#: task_manager/templates/labels/labels_list.html:5
-#: task_manager/templates/tasks/detail.html:49
-msgid "Labels"
-msgstr "Метки"
 
 #: task_manager/tasks/views.py:38
 msgid "Task successfully created"
@@ -274,7 +276,7 @@ msgid "Update user"
 msgstr "Изменение пользователя"
 
 #: task_manager/templates/users/users_list.html:11
-#: task_manager/users/forms.py:23 task_manager/users/forms.py:58
+#: task_manager/users/forms.py:23 task_manager/users/forms.py:56
 msgid "Username"
 msgstr "Имя пользователя"
 
@@ -282,52 +284,55 @@ msgstr "Имя пользователя"
 msgid "Full Name"
 msgstr "Полное имя"
 
-#: task_manager/users/forms.py:11 task_manager/users/forms.py:30
+#: task_manager/users/forms.py:11 task_manager/users/forms.py:32
 msgid "First Name"
 msgstr "Имя"
 
-#: task_manager/users/forms.py:14 task_manager/users/forms.py:33
+#: task_manager/users/forms.py:14 task_manager/users/forms.py:37
 msgid "Last Name"
 msgstr "Фамилия"
 
-#: task_manager/users/forms.py:24 task_manager/users/forms.py:38
-#: task_manager/users/forms.py:59
+#: task_manager/users/forms.py:24 task_manager/users/forms.py:42
 msgid "Password"
 msgstr "Пароль"
 
-#: task_manager/users/forms.py:25
+#: task_manager/users/forms.py:25 task_manager/users/forms.py:48
 msgid "Confirm Password"
 msgstr "Подтверждение пароля"
 
-#: task_manager/users/forms.py:39
+#: task_manager/users/forms.py:43 task_manager/users/forms.py:49
 msgid "Leave blank if you do not want to change the password"
 msgstr "Оставьте поле пустым, если не хотите менять пароль"
 
-#: task_manager/users/views.py:26 task_manager/users/views.py:65
-#: task_manager/users/views.py:87
+#: task_manager/users/forms.py:68
+msgid "Passwords do not match"
+msgstr "Пароли не совпадают"
+
+#: task_manager/users/views.py:25 task_manager/users/views.py:64
+#: task_manager/users/views.py:86
 msgid "You do not have permission to edit"
 msgstr "У вас нет прав для изменения"
 
-#: task_manager/users/views.py:44
+#: task_manager/users/views.py:43
 msgid "User registered successfully"
 msgstr "Пользователь успешно зарегистрирован"
 
-#: task_manager/users/views.py:53
+#: task_manager/users/views.py:52
 msgid "User updated successfully"
 msgstr "Пользователь успешно изменен"
 
-#: task_manager/users/views.py:78
+#: task_manager/users/views.py:77
 msgid "User deleted successfully"
 msgstr "Пользователь успешно удален"
 
-#: task_manager/users/views.py:97
+#: task_manager/users/views.py:96
 msgid "Cannot delete a user because it is in use"
 msgstr "Невозможно удалить пользователя, так как он используется"
 
-#: task_manager/users/views.py:106
+#: task_manager/users/views.py:105
 msgid "You are logged in"
 msgstr "Вы залогинены"
 
-#: task_manager/users/views.py:112
+#: task_manager/users/views.py:111
 msgid "You are logged out"
 msgstr "Вы разлогинены"

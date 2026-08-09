@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.auth import get_user_model
+from django.utils.translation import gettext_lazy as _
 
 from task_manager.labels.models import Label
 
@@ -12,13 +13,13 @@ class TaskForm(forms.ModelForm):
     labels = forms.ModelMultipleChoiceField(
         queryset=Label.objects.all(),
         required=False,
-        label=('Labels')
+        label=_('Labels')
     )
     
     executor = forms.ModelChoiceField(
         queryset=User.objects.all(),
         required=False,
-        label=('Executor'),
+        label=_('Executor'),
     )
 
     class Meta:
