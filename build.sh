@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # скачиваем uv
-curl -LsSf https://astral.sh/uv/install.sh | sh
+curl --proto "=https" -LsSf https://astral.sh | sh
 source $HOME/.local/bin/env
 
 # здесь добавьте все необходимые команды для установки вашего проекта

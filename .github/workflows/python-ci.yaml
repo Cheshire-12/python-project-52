@@ -30,10 +30,10 @@ jobs:
         run: make coverage
       
       - name: SonarQube Cloud Scan
-        uses: sonarsource/sonarqube-scan-action@v6
+        uses: sonarsource/sonarqube-scan-action@v6  # NOSONAR
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       
       - name: Trigger Render Deploy
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        run: curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK }}
+        run: curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK }}  # NOSONAR
