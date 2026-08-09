@@ -1,8 +1,9 @@
 from django.contrib import messages
 from django.contrib.auth import get_user_model
-from django.contrib.auth.mixins import UserPassesTestMixin
+from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.messages.views import SuccessMessageMixin
+from django.db.models import ProtectedError
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
@@ -52,11 +53,36 @@ class UserUpdateView(UserPermissionMixin, SuccessMessageMixin, UpdateView):
 
 
 # 4. Delete user
-class UserDeleteView(UserPermissionMixin, SuccessMessageMixin, DeleteView):
+class UserDeleteView(
+    LoginRequiredMixin,
+    UserPassesTestMixin,
+    SuccessMessageMixin,
+    DeleteView):
     model = User
     template_name = 'users/delete.html'
     success_url = reverse_lazy('users')
     success_message = _('User deleted successfully')
+    
+    def test_func(self):
+        user = self.get_object()
+        return user == self.request.user
+    
+    def handle_no_permission(self):
+        if self.request.user.is_authenticated:
+            messages.error(self.request,
+                        _('You do not have permission to modify another user.'))
+            return redirect('users')
+        return super().handle_no_permission()
+
+    def post(self, request, *args, **kwargs):
+        try:
+            return super().post(request, *args, **kwargs)
+        except ProtectedError:
+            messages.error(
+                request,
+                _('Cannot delete a user because it is in use')
+            )
+            return redirect('users')
 
 
 # 5. Login user
