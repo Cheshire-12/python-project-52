@@ -8,6 +8,10 @@ from .models import Task
 
 User = get_user_model()
 
+class UserModelChoiceField(forms.ModelChoiceField):
+    def label_from_instance(self, obj):
+        return obj.get_full_name() or obj.username
+
 
 class TaskForm(forms.ModelForm):
     labels = forms.ModelMultipleChoiceField(
@@ -16,7 +20,7 @@ class TaskForm(forms.ModelForm):
         label=_('Labels')
     )
     
-    executor = forms.ModelChoiceField(
+    executor = UserModelChoiceField(
         queryset=User.objects.all(),
         required=False,
         label=_('Executor'),
