@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 
 from pathlib import Path
 import os
+import sys
 import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -170,3 +171,6 @@ ROLLBAR = {
     'code_version': os.getenv('GIT_SHA', '1.0.0'),
     'root': BASE_DIR,
 }
+
+if 'test' in sys.argv:
+    AUTH_PASSWORD_VALIDATORS = []
