@@ -1,6 +1,9 @@
 install:
 	uv sync
 
+install-prod:
+	uv sync --no-dev
+
 build:
 	./build.sh
 

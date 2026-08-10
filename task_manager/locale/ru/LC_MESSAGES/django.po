@@ -71,7 +71,7 @@ msgstr "Невозможно удалить статус, потому что о
 
 #: task_manager/tasks/filters.py:12
 msgid "My tasks only"
-msgstr ""
+msgstr "Только свои задачи"
 
 #: task_manager/tasks/forms.py:16 task_manager/tasks/models.py:40
 #: task_manager/templates/base.html:35
