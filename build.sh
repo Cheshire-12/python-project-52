@@ -1,7 +1,4 @@
 #!/usr/bin/env bash
-
-set -o errexit
-
 echo "Downloading uv..."
 curl --proto "=https" -LsSf https://astral.sh | sh
 source $HOME/.local/bin/env
